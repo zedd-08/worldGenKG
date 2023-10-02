@@ -1,0 +1,12 @@
+{
+	"resolved_zelda_botw":{
+		"nsamples" : 15,
+		"cutoffs": "11.5 15 12",
+		"comments": "Coreference rosolution results in better outputs in this case. Without coref resolution, the outputs are plain bad."
+	},
+	"rapunzel":{
+		"nsamples" : 0,
+		"cutoffs": "0 0 0",
+		"comments": "Coreference rosolution results in worse outputs as the resolved text is not properly resovled."
+	}
+}

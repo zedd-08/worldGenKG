@@ -1157,6 +1157,8 @@ def get_predictions(example, features, all_results, n_best_size,
         if not best_non_null_entry:
             if entry.text:
                 best_non_null_entry = entry
+    if best_non_null_entry is None:
+        return None, None
 
     probs = _compute_softmax(total_scores)
 
