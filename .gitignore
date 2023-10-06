@@ -2,3 +2,4 @@
 *.dot
 *.gml
 *.txt
+__pycache__
