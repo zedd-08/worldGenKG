@@ -228,7 +228,7 @@ class World:
         entities.extend([(x, 'location') for x in locs])
         return entities
 
-    def autocomplete(self):
+    def autocomplete(self, game_id, id_start):
         self.generateNeighbors(self.args.nsamples)
 
         while not self.is_connected():
@@ -262,13 +262,15 @@ class World:
             
             if u_type == v_type:
                 if u_type == 'location':
-                    rel_type = "connected to"
+                    rel_type = "connected_to"
                 else:
                     rel_type = "NA" 
             elif u_type == 'location' and v_type in ['object', 'character'] or v_type == 'location' and u_type in ['object', 'character']:
-                rel_type = "present in"
+                rel_type = "present_in"
             else:
-                rel_type = "held by"
+                rel_type = "held_by"
             
-            self.graph.add_edge(v, u, label=rel_type)
+            self.graph.add_edge(v, u, label=rel_type, id=f'{game_id}_E{id_start}')
+            id_start += 1
             self.edge_labels[(v, u)] = rel_type
+        return id_start
